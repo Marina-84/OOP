@@ -4,7 +4,7 @@ def tests_products(first_product, second_product, third_product, fourth_product)
     assert first_product.price == 180000.0
     assert first_product.quantity == 5
 
-    assert second_product.name == "Iphone 15"
+    assert second_product.name == "Iphone 16"
     assert second_product.description == "512GB, Gray space"
     assert second_product.price == 210000.0
     assert second_product.quantity == 8
