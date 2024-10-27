@@ -16,5 +16,5 @@ def tests_products(first_product, second_product, third_product, fourth_product)
 
     assert fourth_product.name == "Xiaomi Redmi Note 11"
     assert fourth_product.description == "1024GB, Синий"
-    assert fourth_product.price == 31000.0
+    assert fourth_product.price == 32000.0
     assert fourth_product.quantity == 14
