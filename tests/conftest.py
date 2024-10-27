@@ -33,7 +33,7 @@ def fourth_product():
     return Product(
         name="Xiaomi Redmi Note 11",
         description="1024GB, Синий",
-        price=32000.0,
+        price=31000.0,
         quantity=14,
     )
 
