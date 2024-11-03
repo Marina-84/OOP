@@ -1,20 +1,21 @@
-def tests_products(first_product, second_product, third_product, fourth_product):
-    assert first_product.name == "Samsung"
-    assert first_product.description == "256GB, Серый цвет, 200MP камера"
-    assert first_product.price == 180000.0
-    assert first_product.quantity == 5
+from src.category import Category
 
-    assert second_product.name == "Iphone 15"
-    assert second_product.description == "512GB, Gray space"
-    assert second_product.price == 210000.0
-    assert second_product.quantity == 8
 
-    assert third_product.name == "55 QLED 4K"
-    assert third_product.description == "Фоновая подсветка"
-    assert third_product.price == 123000.0
-    assert third_product.quantity == 7
+def test_category_init(second_category):
+    assert second_category.name == "Телевизоры"
+    assert second_category.description == "Современный телевизор, который станет вашим другом"
+    assert second_category.products == [
+        {"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}
+    ]
 
-    assert fourth_product.name == "Xiaomi Redmi Note 11"
-    assert fourth_product.description == "1024GB, Синий"
-    assert fourth_product.price == 31000.0
-    assert fourth_product.quantity == 14
+
+def test_category_count(first_category, second_category):
+    assert Category.category_count == 2
+    assert first_category.category_count == 2
+    assert second_category.category_count == 2
+
+
+def test_product_count(first_category, second_category):
+    assert Category.product_count == 4
+    assert first_category.product_count == 4
+    assert second_category.product_count == 4

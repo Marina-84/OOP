@@ -8,3 +8,8 @@ def read_json(path: str) -> dict:
         data = json.load(file)
 
     return data
+
+
+if __name__ == "__main__":
+    data = read_json("../data/products.json")
+    print(data)
