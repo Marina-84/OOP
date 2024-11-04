@@ -35,7 +35,8 @@ if __name__ == "__main__":
         [{"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}],
     )
 
-    category3 = Category("Ноутбуки", "Современный ноутбук по доступной цене", [])
+    #category3 = Category("Ноутбуки", "Современный ноутбук по доступной цене", [])
+
 
     print(category1.name)
     print(category1.description)
@@ -43,8 +44,8 @@ if __name__ == "__main__":
     print(category2.name)
     print(category2.description)
     print(category2.products)
-    print(category3.name)
-    print(category3.description)
-    print(category3.products)
+    #print(category3.name)
+    #print(category3.description)
+    #print(category3.products)
     print(category2.category_count)
     print(Category.product_count)
