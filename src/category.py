@@ -1,3 +1,6 @@
+from src.products import Product
+
+
 class Category:
     name: str
     description: str
@@ -10,42 +13,39 @@ class Category:
         Category.product_count += len(products) if products else 0
         self.name = name
         self.description = description
-        self.products = products
+        self.__products = products
+
+
+    def add_product(self, product):
+        self.__products.append(product)
+        Category.product_count += 1
+
+    @property
+    def products(self):
+        product_str = ""
+        for product in self.__products:
+            product_str += f"Название продукта : {product.name}, цена : {product.price} рублей, Остаток: {product.quantity} штук.\n"
+        return product_str
+
+    @products.setter
+    def products(self, new_products):
+        self.__products = new_products
 
 
 if __name__ == "__main__":
+    product1 = Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    product2 = Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+    product3 = Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+
     category1 = Category(
         "Смартфоны",
-        "Смартфоны, как средство получения дополнительных функций для удобства жизни",
-        [
-            {
-                "name": "Samsung Galaxy C23 Ultra",
-                "description": "256GB, Серый цвет, 200MP камера",
-                "price": 180000.0,
-                "quantity": 5,
-            },
-            {"name": "Iphone 15", "description": "512GB, Gray space", "price": 210000.0, "quantity": 8},
-            {"name": "Xiaomi Redmi Note 11", "description": "1024GB, Синий", "price": 31000.0, "quantity": 14},
-        ],
+        "Смартфоны, как средство не только коммуникации, но и получения дополнительных функций для удобства жизни",
+        [product1, product2, product3]
     )
 
-    category2 = Category(
-        "Телевизоры",
-        "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом",
-        [{"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}],
-    )
-
-    #category3 = Category("Ноутбуки", "Современный ноутбук по доступной цене", [])
-
-
-    print(category1.name)
-    print(category1.description)
     print(category1.products)
-    print(category2.name)
-    print(category2.description)
-    print(category2.products)
-    #print(category3.name)
-    #print(category3.description)
-    #print(category3.products)
-    print(category2.category_count)
-    print(Category.product_count)
+    product4 = Product("55\" QLED 4K", "Фоновая подсветка", 123000.0, 7)
+    category1.add_product(product4)
+    print(category1.products)
+    print(category1.product_count)
+
