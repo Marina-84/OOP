@@ -26,3 +26,11 @@ def test_price_setter(capsys):
     assert new_product.price == 99999
     new_product.price = 100
     assert new_product.price == 100
+
+
+def test_product_str(product1):
+    assert str(product1) == "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт."
+
+
+def test_add_product(product, product1):
+    assert product + product1 == 1334000

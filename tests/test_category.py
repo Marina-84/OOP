@@ -22,3 +22,7 @@ def test_category_products_property(category_property):
     assert category_property.products == (
         "Iphone 15, 210000.0 руб. Остаток: 8 шт.\n" "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт.\n"
     )
+
+
+def test_category_str(category_property):
+    assert str(category_property) == "Смартфоны, количество продуктов: 22 шт."
