@@ -10,42 +10,29 @@ class Category:
         Category.product_count += len(products) if products else 0
         self.name = name
         self.description = description
-        self.products = products
+        self.__products = products
 
+    def __str__(self):
+        total_quantity = 0
+        for product in self.__products:
+            total_quantity += product.quantity
+        return f"{self.name}, количество продуктов: {total_quantity} шт."
 
-if __name__ == "__main__":
-    category1 = Category(
-        "Смартфоны",
-        "Смартфоны, как средство получения дополнительных функций для удобства жизни",
-        [
-            {
-                "name": "Samsung Galaxy C23 Ultra",
-                "description": "256GB, Серый цвет, 200MP камера",
-                "price": 180000.0,
-                "quantity": 5,
-            },
-            {"name": "Iphone 15", "description": "512GB, Gray space", "price": 210000.0, "quantity": 8},
-            {"name": "Xiaomi Redmi Note 11", "description": "1024GB, Синий", "price": 31000.0, "quantity": 14},
-        ],
-    )
+    def add_product(self, product):
+        self.__products.append(product)
+        Category.product_count += 1
 
-    category2 = Category(
-        "Телевизоры",
-        "Современный телевизор, который позволяет наслаждаться просмотром, станет вашим другом",
-        [{"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}],
-    )
+    @property
+    def products(self):
+        product_str = ""
+        for product in self.__products:
+            product_str += f"{product.name}, {product.price} руб. Остаток: {product.quantity} шт.\n"
+        return product_str
 
-    #category3 = Category("Ноутбуки", "Современный ноутбук по доступной цене", [])
+    @products.setter
+    def products(self, new_product):
+        self.__products = new_product
 
-
-    print(category1.name)
-    print(category1.description)
-    print(category1.products)
-    print(category2.name)
-    print(category2.description)
-    print(category2.products)
-    #print(category3.name)
-    #print(category3.description)
-    #print(category3.products)
-    print(category2.category_count)
-    print(Category.product_count)
+    @property
+    def products_list(self):
+        return self.__products
