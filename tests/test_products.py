@@ -1,11 +1,13 @@
+import pytest
+
 from src.products import Product
 
 
-def test_product_init(product):
-    assert product.name == "Samsung"
-    assert product.description == "256GB, Серый цвет, 200MP камера"
-    assert product.price == 180000.0
-    assert product.quantity == 5
+def test_product_init(product1):
+    assert product1.name == "Samsung"
+    assert product1.description == "256GB, Серый цвет, 200MP камера"
+    assert product1.price == 180000.0
+    assert product1.quantity == 5
 
 
 def test_new_product():
@@ -28,9 +30,11 @@ def test_price_setter(capsys):
     assert new_product.price == 100
 
 
-def test_product_str(product1):
-    assert str(product1) == "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт."
+def test_product_str(product2):
+    assert str(product2) == "Xiaomi Redmi Note 11, 31000.0 руб. Остаток: 14 шт."
 
 
-def test_add_product(product, product1):
-    assert product + product1 == 1334000
+def test_add_product(product1, product2):
+    assert product1 + product2 == 1334000
+    with pytest.raises(TypeError):
+        product1 + 1
