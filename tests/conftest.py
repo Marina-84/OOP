@@ -77,8 +77,7 @@ def smartphone1():
 
 @pytest.fixture
 def smartphone2():
-
-     return Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
+    return Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
 
 
 @pytest.fixture
