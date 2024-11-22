@@ -17,11 +17,23 @@ def product2():
 
 
 @pytest.fixture
-def second_category():
+def category():
     return Category(
         "Телевизоры",
         "Современный телевизор, который станет вашим другом",
         [{"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}],
+    )
+
+
+@pytest.fixture
+def category2():
+    return Category(
+        "Смартфоны",
+        "Категория смартфонов",
+        [
+            Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5),
+            Product("Iphone 15", "512GB, Gray space", 210000.0, 8),
+        ],
     )
 
 
@@ -90,3 +102,8 @@ def new_product():
             "quantity": 5,
         }
     )
+
+
+@pytest.fixture()
+def product_invalid():
+    return Product("Бракованный товар", "Неверное количество", 1000.0, 0)
