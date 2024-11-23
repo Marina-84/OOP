@@ -1,14 +1,14 @@
 from src.category import Category
 
 
-def test_category_init(second_category):
-    assert second_category.name == "Телевизоры"
-    assert second_category.description == "Современный телевизор, который станет вашим другом"
-    assert second_category.products_list == [
+def test_category_init(category):
+    assert category.name == "Телевизоры"
+    assert category.description == "Современный телевизор, который станет вашим другом"
+    assert category.products_list == [
         {"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}
     ]
     assert Category.category_count == 1
-    assert len(second_category.products_list) == 1
+    assert len(category.products_list) == 1
     assert Category.product_count == 1
 
 
@@ -26,3 +26,8 @@ def test_category_products_property(category_property):
 
 def test_category_str(category_property):
     assert str(category_property) == "Смартфоны, количество продуктов: 22 шт."
+
+
+def test_middle_price(category2, category3):
+    assert category3.middle_price() == 0
+    assert category2.middle_price() == 195000.0

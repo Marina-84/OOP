@@ -19,7 +19,7 @@ def test_new_product():
 
 
 def test_price_setter(capsys):
-    new_product = Product.new_product("Samsung Galaxy C23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+    new_product = Product.new_product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
     new_product.price = 99999
     assert new_product.price == 99999
     new_product.price = 0
@@ -38,3 +38,14 @@ def test_add_product(product1, product2):
     assert product1 + product2 == 1334000
     with pytest.raises(TypeError):
         product1 + 1
+
+
+def test_quantity_zero(capsys):
+    with pytest.raises(ValueError):
+        Product("Бракованный товар", "Неверное количество", 1000.0, 0)
+        message = capsys.readouterr()
+        assert message.out.strip().split("\n")[-1] == (
+            "Возникла ошибка ValueError"
+            "прерывающая работу программы при попытке"
+            "добавить продукт с нулевым количеством"
+        )
